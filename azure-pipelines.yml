@@ -10,9 +10,9 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '723477ce-4e05-4e6e-a3c1-13bdf919a5cd'
+  dockerRegistryServiceConnection: '84eb947b-5a33-4f94-a84c-2ad135465bf9'
   imageRepository: 'dockerspringbootapp'
-  containerRegistry: 'myacrrepo131.azurecr.io'
+  containerRegistry: 'kalpacrrepo31.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
@@ -42,28 +42,6 @@ stages:
       displayName: Build a Docker image 
       inputs:
         command: build
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
-    - task: Bash@3
-      displayName: "Install Trivy"
-      inputs:
-        targetType: inline
-        script: |
-          curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh
- # Run Trivy Scan
-    - task: Bash@3
-      displayName: "Run Trivy Scan"
-      inputs:
-        targetType: inline
-        script: |
-          ./bin/trivy image --severity HIGH,CRITICAL,MEDIUM --ignore-unfixed $(containerRegistry)/$(imageRepository):$(tag)
-    - task: Docker@2
-      displayName: push the image to container registry
-      inputs:
-        command: Push
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
