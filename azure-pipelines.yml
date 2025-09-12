@@ -10,7 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '84eb947b-5a33-4f94-a84c-2ad135465bf9'
+  dockerRegistryServiceConnection: 'kalpacrrepo31-sc'
   imageRepository: 'dockerspringbootapp'
   containerRegistry: 'kalpacrrepo31.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
