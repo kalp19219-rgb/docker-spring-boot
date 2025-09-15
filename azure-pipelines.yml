@@ -5,7 +5,7 @@ resources:
 - repo: self
 
 variables:
-  dockerRegistryServiceConnection: 'acr-kalpacrrepo31-con'
+  dockerRegistryServiceConnection: 'acr-kalpacrrepo31-connection'
   imageRepository: 'dockerspringbootapp'
   containerRegistry: 'kalpacrrepo31.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
